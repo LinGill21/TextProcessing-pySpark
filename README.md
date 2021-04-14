@@ -107,3 +107,6 @@ most used word in the book but in second was the last name of the victim. The vi
 john which is the name of the murderer. The 9th word is John's last name shared with his wife Emily who is a suspect. I believe due to the common use of other names besides 
 poriet the novel is plot-driven not lead detective driven.
 
+### References:
+* [pyspark](https://github.com/apache/spark/blob/v3.1.1-rc3/examples/src/main/python/wordcount.py)
+* [matplotlib](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.barh.html)
