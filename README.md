@@ -21,7 +21,9 @@ In the notebook, I will pull the data into the notebook by using the library url
 import urllib.request
 urllib.request.urlretrieve("https://raw.githubusercontent.com/LinGill21/TextProcessing-pySpark/main/TheMysteriousAffairatStyles.txt" , "/tmp/Christie.txt")
 ```
-Now to save the book. The method takes two arguments the first argument is where the book is now and the second argument is where you want the book to go. The first argument needs to start with file: and then the location. The second argument needs to start with dbfs: and then the location of where you want to store the file. I store my file in the data folder.
+Now to save the book. The method takes two arguments the first argument is where the book is now and the second argument is where you want the book to go. The first argument 
+needs to start with file: and then the location. The second argument needs to start with dbfs: and then the location of where you want to store the file. I store my file in 
+the data folder.
 ```python
 dbutils.fs.mv("file:/tmp/Christie.txt","dbfs:/data/Christie.txt")
 ```
@@ -29,6 +31,25 @@ The final step is transferring the file into spark. Spark holds files in RDDs or
 In Databrick spark is shortened to sc. Make sure to use the new file location when entering the location.
 ```
 christieRDD = sc.textFile("dbfs:/data/Christie.txt")
+```
+
+## Cleaning the Data
+The book is currently in book form with capitalization, punctuation, sentences, and stopwords. Stop words are just words that just make a sentence read better but don't 
+add anything to the sentence. For example "the".  So to get the word count the first step is to flatmap and get rid of capitalization and spaces. Flatmapping is just breaking up the sentences into words.
+```
+wordsRDD=christieRDD.flatMap(lambda line : line.lower().strip().split(" "))
+```
+The second step is to remove all the punctuation. This will be achieved by using a regular expression that looks for anything that is not a letter. To use a regular expression we will need the library re.
+```
+import re
+cleanTokensRDD = wordsRDD.map(lambda w: re.sub(r'[^a-zA-Z]','',w))
+```
+Now that the words are truly words we have to remove the stop words. PySpark already knows what words are stop words so all we need to do is to import the library StopWordsRemover from pyspark. Then filter out those words from the library.
+```
+from pyspark.ml.feature import StopWordsRemover
+remover =StopWordsRemover()
+stopwords = remover.getStopWords()
+cleanwordRDD=cleanTokensRDD.filter(lambda w: w not in stopwords)
 ```
 
 
