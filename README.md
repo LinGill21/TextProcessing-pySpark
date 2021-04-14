@@ -3,7 +3,7 @@
 ## About
 I am going to answer the question are old mysteries more plot-focused than a newer mystery novel. How I going to go about doing this is to scan the book The Mysterious Affair 
 at Styles into Pyspark, then with pySpark I will clean the data, process the data and finally, I will graph the most commonly used words. If the detective name is the most 
-commonly used word then the book is character-driven. If some other word is most commonly used then the book is plot-driven.
+commonly used word then the book is lead detective-driven. If some other word is most commonly used then the book is plot-driven.
 
 ## Data
 For this project, I will use a book from [Project Gutenberg] (https://www.gutenberg.org/). The book I will use is The Mysterious Affair at Styles by Agatha Christie.
@@ -98,7 +98,12 @@ plt.title("Most used words in Myserious affair at styles")
 plt.show()
 ```
 Graph:
+
 ![GraphImg](https://github.com/LinGill21/TextProcessing-pySpark/blob/main/words.png)
 
-
+## Conclusion
+In the about it was stated that if the detective's name showed up in the top 20 the book would be classified as a character-driven book. The detective's name Poirot was the 
+most used word in the book but in second was the last name of the victim. The victim's husband shares her last name and is a suspect in the case. The 8th most used word is 
+john which is the name of the murderer. The 9th word is John's last name shared with his wife Emily who is a suspect. I believe due to the common use of other names besides 
+poriet the novel is plot-driven not lead detective driven.
 
