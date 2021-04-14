@@ -1,6 +1,9 @@
 # TextProcessing-pySpark
 # By Lindsay Gillespie
 ## About
+I am going to answer the question are old mysteries more plot-focused than a newer mystery novel. How I going to go about doing this is to scan the book The Mysterious Affair 
+at Styles into Pyspark, then with pySpark I will clean the data, process the data and finally, I will graph the most commonly used words. If the detective name is the most 
+commonly used word then the book is character-driven. If some other word is most commonly used then the book is plot-driven.
 
 ## Data
 For this project, I will use a book from [Project Gutenberg] (https://www.gutenberg.org/). The book I will use is The Mysterious Affair at Styles by Agatha Christie.
@@ -94,7 +97,8 @@ plt.ylabel("Most used words")
 plt.title("Most used words in Myserious affair at styles")
 plt.show()
 ```
-
+Graph:
+![GraphImg](https://github.com/LinGill21/TextProcessing-pySpark/blob/main/words.png)
 
 
 
